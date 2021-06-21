@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+
+import Profiles from './Profiles/Profiles';
+import NewProfile from './NewProfile/NewProfile';
 import './App.css';
 
 function App() {
+
+  const [profiles, setProfiles] = useState([
+    {
+      id: 1,
+      name: 'Rahul',
+      age: 27
+    },{
+      id: 2,
+      name: 'Aditya',
+      age: 26
+    },
+  ]);
+
+  const addNewProfile = newProfile => {
+    setProfiles(prevState => {
+      return [newProfile, ...prevState];
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Form overlay</h1>
+      <NewProfile onNewProfileAddition={addNewProfile} />
+      <Profiles profiles={profiles} />
     </div>
   );
 }
