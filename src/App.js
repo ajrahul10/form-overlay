@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import Profiles from './Profiles/Profiles';
-import NewProfile from './NewProfile/NewProfile';
+import Users from './components/Users/Users';
+import NewUser from './components/Users/NewUser/NewUser';
 import './App.css';
 
 function App() {
 
-  const [profiles, setProfiles] = useState([
+  const [users, setUsers] = useState([
     {
       id: 1,
       name: 'Rahul',
@@ -18,17 +18,17 @@ function App() {
     },
   ]);
 
-  const addNewProfile = newProfile => {
-    setProfiles(prevState => {
-      return [newProfile, ...prevState];
+  const addNewUser = newUser => {
+    setUsers(prevState => {
+      return [newUser, ...prevState];
     })
   }
 
   return (
     <div className="App">
       <h1>Form overlay</h1>
-      <NewProfile onNewProfileAddition={addNewProfile} />
-      <Profiles profiles={profiles} />
+      <NewUser onNewUserAddition={addNewUser} />
+      <Users users={users} />
     </div>
   );
 }

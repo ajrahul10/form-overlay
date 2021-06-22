@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const NewProfileForm = (props) => {
+const NewUserForm = (props) => {
 
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
@@ -14,20 +14,20 @@ const NewProfileForm = (props) => {
 
     const onSubmitHandler = e => {
         e.preventDefault();
-        if(name.length === 0 || age.length === 0) {
+        if (name.length === 0 || age.length === 0) {
             console.log("error");
             return;
         }
-        if(age < 0) {
+        if (age < 0) {
             console.log("error1");
             return;
         }
-        let newProfile = {
+        let newUser = {
             id: Math.random(),
             name: name,
             age: age
         }
-        props.onNewProfileFormSubmit(newProfile);
+        props.onNewUserFormSubmit(newUser);
         setName("");
         setAge("");
     }
@@ -37,12 +37,22 @@ const NewProfileForm = (props) => {
             <form onSubmit={onSubmitHandler}>
                 <div>
                     <div>
-                        <label>Username</label>
-                        <input value={name} onChange={onNameChangeHandler} type="text" />
+                        <label htmlFor="username">Username</label>
+                        <input
+                            id="username"
+                            value={name}
+                            onChange={onNameChangeHandler}
+                            type="text"
+                        />
                     </div>
                     <div>
-                        <label>Age(Years)</label>
-                        <input value={age} onChange={onAgeChangeHandler} type="number" />
+                        <label htmlFor="age">Age(Years)</label>
+                        <input
+                            id="age"
+                            value={age}
+                            onChange={onAgeChangeHandler}
+                            type="number"
+                        />
                     </div>
                 </div>
                 <div>
@@ -53,4 +63,4 @@ const NewProfileForm = (props) => {
     )
 }
 
-export default NewProfileForm;
+export default NewUserForm;
