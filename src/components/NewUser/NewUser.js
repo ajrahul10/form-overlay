@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import './NewUser.css'
 
-const NewUserForm = (props) => {
+const NewUser = props => {
 
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
@@ -14,11 +15,11 @@ const NewUserForm = (props) => {
 
     const onSubmitHandler = e => {
         e.preventDefault();
-        if (name.length === 0 || age.length === 0) {
+        if (name.trim().length === 0 || age.trim().length === 0) {
             console.log("error");
             return;
         }
-        if (age < 0) {
+        if (+age < 0) {
             console.log("error1");
             return;
         }
@@ -27,7 +28,7 @@ const NewUserForm = (props) => {
             name: name,
             age: age
         }
-        props.onNewUserFormSubmit(newUser);
+        props.onNewUserAddition(newUser);
         setName("");
         setAge("");
     }
@@ -60,7 +61,7 @@ const NewUserForm = (props) => {
                 </div>
             </form>
         </div>
-    )
+    );
 }
 
-export default NewUserForm;
+export default NewUser;
