@@ -11,16 +11,22 @@ function App() {
       id: 1,
       name: 'Rahul',
       age: 27
-    },{
+    }, {
       id: 2,
       name: 'Aditya',
       age: 26
     },
   ]);
 
-  const addNewUser = newUser => {
+  const addNewUser = (name, age) => {
     setUsers(prevState => {
-      return [newUser, ...prevState];
+      return [
+        {
+          id: Math.random().toString,
+          name: name,
+          age: age
+        },
+        ...prevState];
     })
   }
 

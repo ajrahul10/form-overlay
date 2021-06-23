@@ -10,7 +10,7 @@ const NewUser = props => {
         setName(e.target.value);
     }
     const onAgeChangeHandler = e => {
-        setAge(Number(e.target.value));
+        setAge(e.target.value);
     }
 
     const onSubmitHandler = e => {
@@ -23,12 +23,7 @@ const NewUser = props => {
             console.log("error1");
             return;
         }
-        let newUser = {
-            id: Math.random(),
-            name: name,
-            age: age
-        }
-        props.onNewUserAddition(newUser);
+        props.onNewUserAddition(name, age);
         setName("");
         setAge("");
     }
